@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/site_media/slider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/site_media/index.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="/site_media/slider.js"></script>
+    <script type="text/javascript" src="/site_media/index.js"></script>
+  </head>
+  <body>
+    <table>
+      <thead>
+         <tr>
+           <th>ważność</th>
+           <th>odpowiedź</th>
+           <th></th>
+           {% for candidate in candidates %}
+           <th class="candidate{{forloop.counter0}}">{{ candidate }}</th>
+           {% endfor %}
+         </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          {% for candidate in candidates %}
+          <td class="candidate{{forloop.counter0}}">4</td>
+          {% endfor %}
+        </tr>
+      </tfoot>
+      <tbody>
+        {% for question in questions %}
+        <tr class="question{{forloop.counter0}}">
+          <td class="importance">
+            <input type="text" title="Range: 0 - 100" class="fd_slider fd_range_0_100 fd_hide_input fd_callback_updateAnswers" value="50" />
+          </td>
+          <td class="opinion">
+            <input type="text" title="Range: -2 - 2" class="fd_slider fd_range_-2_2 fd_hide_input fd_callback_updateCandidates" value="0" />
+          </td>
+          <td class="topic">{{ question.0 }}</td>
+          {% for answer in question.1 %}
+          <td class="answer candidate{{forloop.counter0}}">
+            <input type="text" title="Range: -2 - 2" class="fd_slider fd_range_-2_2 fd_hide_input fd_callback_updateCandidates" value="{{answer}}" />  
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+  </body>
+</html>

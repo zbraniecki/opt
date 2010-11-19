@@ -1,0 +1,12 @@
+table {
+  border: 1px solid black;
+}
+
+td, th {
+  border: 1px solid black;
+}
+
+.fd-slider {
+  width: 100px;
+}
+
